@@ -17,7 +17,9 @@ from django.conf.urls import url
 from ratings import views
 
 urlpatterns = [
-    url(r'^ratings/$', views.all_ratings),
-    url(r'^rating/(?P<zipcode>[0-9]{5})/(?P<user_id>[0-9]*)/$', views.single_rating),
-    url(r'^rating/$', views.create_or_update_rating),
+    url(r'^ratings/$', views.all_ratings), # GET
+    url(r'^ratings/(?P<zipcode>[0-9]{5})/$', views.ratings_for_zipcode), # GET
+    url(r'^rating/(?P<zipcode>[0-9]{5})/$', views.average_rating_for_zipcode), # GET
+    url(r'^rating/(?P<zipcode>[0-9]{5})/(?P<user_id>[0-9]*)/$', views.single_rating), # GET, DELETE
+    url(r'^rating/$', views.create_or_update_rating), # POST
 ]
